@@ -1,0 +1,20 @@
+.search-bar {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 700px;
+    padding: 23px 25px;
+    margin-left: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+
+    button {
+        background-color: transparent;
+        border: none;
+        color: hsl(180, 29%, 50%);
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}

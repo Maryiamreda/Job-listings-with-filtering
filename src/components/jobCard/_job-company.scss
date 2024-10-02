@@ -1,0 +1,29 @@
+.job-company {
+    display: inline-flex;
+    gap: 15px;
+    font-size: 14px;
+
+    .company {
+        color: hsl(180, 29%, 50%);
+
+    }
+
+    span {
+        color: white;
+        font-size: 10px;
+        padding: 4px 6px;
+        border-radius: 10px;
+    }
+
+
+    .new-badge {
+        background-color: hsl(180, 29%, 50%);
+
+    }
+
+    .featured-badge {
+        background-color: black;
+    }
+}
+
+.featured {}

@@ -1,0 +1,72 @@
+@import'./job-details';
+@import'./job-company';
+
+.card-wrapper {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 700px;
+    padding: 23px 25px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+    background-color: white;
+}
+
+
+.container {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    margin: 20px;
+}
+
+.right-container {
+    display: flex;
+    gap: 20px;
+
+    .job-listing {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}
+
+.left-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    button {
+        background-color: hsl(180, 31%, 95%);
+        color: hsl(180, 29%, 50%); // Dark cyan text
+        border: none;
+        border-radius: 4px;
+        padding: 5px;
+
+        font-weight: 700;
+        font-size: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: hsl(180, 29%, 50%);
+            color: white;
+        }
+    }
+}
+
+.card-wrapper.featured {
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3.5px;
+        background-color: #5ba4a4; // Use the cyan color from your image
+    }
+}
