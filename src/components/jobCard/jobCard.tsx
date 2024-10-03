@@ -1,15 +1,11 @@
 
 import './jobCard.scss';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../../store/store'; // Adjust the import path as needed
+import { addSearchItem } from '../../store/searchItemSlice'; // Adjust the import path as needed
 import { useEffect, useState } from "react";
 
-type CardProps = {
-    sendDataToParent: (items: string[]) => void; // Update the prop type to a function
-}
-
-const Card = ({ sendDataToParent }: CardProps) => {
-    const [data, setData] = useState<Job[] | null>(null);
-    const [searchItems, setSearchItems] = useState<string[]>([]);
+const Card = () => {
     type Job = {
         company: string,
         logo: string,
@@ -24,27 +20,30 @@ const Card = ({ sendDataToParent }: CardProps) => {
         languages: string[],
         tools: string[],
     }
+
+    const [data, setData] = useState<Job[] | null>(null);
+    const [filteredUsers, setFilteredUsers] = useState<Job[] | null>(data)
+
+    const searchItems = useSelector((state: RootState) => state.searchItems);
+    const dispatch = useDispatch();
+
     // Log searchItems every time it updates
+
     useEffect(() => {
         console.log("searchItems updated:", searchItems);
-        sendDataToParent(searchItems);
-    }, [searchItems, sendDataToParent]);
+    }, [searchItems]);
+
 
     useEffect(() => {
         fetch('data.json').then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching data:', error));
     }, [])
+
     const addSearch = (value: string) => {
-        if (!searchItems.includes(value)) {
-            setSearchItems(prevItems => {
-
-                const updatedItems = [...prevItems, value]; // Create a new array with the added value
-                return updatedItems;
-            })
-        }
-
+        dispatch(addSearchItem(value));
     };
+
     return (
         <div className="container" >
 
@@ -70,12 +69,12 @@ const Card = ({ sendDataToParent }: CardProps) => {
                         </div>
                         {/* role level  */}
                         <div className="left-container ">
-                            <button onClick={() => addSearch(job.role)}>{job.role}</button>
-                            <button onClick={() => addSearch(job.level)}>{job.level}</button>
+                            <button onClick={() => addSearch(job.role)}><b>{job.role}</b></button>
+                            <button onClick={() => addSearch(job.level)}><b>{job.level}</b></button>
                             {job.languages.length > 0 && job.languages.map((language, index) => (
-                                <button onClick={() => addSearch(language)} key={index}>{language}</button>))}
+                                <button onClick={() => addSearch(language)} key={index}><b>{language}</b></button>))}
                             {job.tools.length > 0 && job.tools.map((tool, index) => (
-                                <button onClick={() => addSearch(tool)} key={index}>{tool}</button>))}
+                                <button onClick={() => addSearch(tool)} key={index}><b>{tool}</b></button>))}
 
                         </div>
 

@@ -18,3 +18,30 @@
         cursor: pointer;
     }
 }
+
+.search-items {
+    display: inline-flex;
+    gap: 10px;
+    font-size: 13px;
+    color: hsl(180, 29%, 50%);
+
+}
+
+.search-item {
+    background-color: hsl(180, 31%, 95%);
+    border-radius: 5px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+
+    b {
+        padding: 6px;
+    }
+
+    button {
+        padding: 3.5px 5px;
+        border-radius: 0 5px 5px 0;
+        background-color: hsl(180, 29%, 50%);
+        ;
+    }
+}

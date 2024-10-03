@@ -1,24 +1,21 @@
-import { useState } from "react";
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/store'; // Adjust the import path as needed
 import Card from "./jobCard/jobCard";
 import SearchBar from "./searchBar/searchBar";
 import './wrapper.scss';
 
 const Wrapper = () => {
-    const [dataFromChild, setDataFromChild] = useState<string[]>([]); // Change to an array
-
-    function handleDataFromChild(data: string[]) {
-        setDataFromChild(data); // Update state with the new array
-    }
+    const searchItems = useSelector((state: RootState) => state.searchItems);
 
     return (
         <div>
-            {dataFromChild.length > 0 && ( // Only display if dataFromChild has items
+            {searchItems.length > 0 && (
                 <div className="search">
                     <SearchBar />
                 </div>
             )}
-            <div style={{ marginTop: dataFromChild.length > 0 ? '20px' : '160px' }} >
-                <Card sendDataToParent={handleDataFromChild} />
+            <div style={{ marginTop: searchItems.length > 0 ? '20px' : '160px' }}>
+                <Card />
             </div>
         </div>
     );
