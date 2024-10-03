@@ -8,7 +8,7 @@ const SearchBar = () => {
     const dispatch = useDispatch();
     return (
         <div className='search-bar'>
-            <div className='search-items'> {searchItems.length > 0 && searchItems.map((item, index) => (
+            <div className='search-items'> {searchItems.length > 0 && searchItems.map((item) => (
                 <div className='search-item'>
                     <b>{item}</b>
                     <button onClick={() => { dispatch(removeSearchItem(item)) }}><img src={Icon} alt=''></img></button>

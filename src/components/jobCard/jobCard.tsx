@@ -1,7 +1,7 @@
 
 import './jobCard.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../../store/store'; // Adjust the import path as needed
+import { RootState } from '../../store/store'; // Adjust the import path as needed
 import { addSearchItem } from '../../store/searchItemSlice'; // Adjust the import path as needed
 import { useEffect, useState } from "react";
 

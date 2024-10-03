@@ -9,7 +9,7 @@ const searchItemSlice = createSlice({
                 state.push(action.payload);
             }
         },
-        clearSearchItems: (state) => {
+        clearSearchItems: () => {
             return [];
         },
         removeSearchItem: (state, action: PayloadAction<string>) => {
