@@ -33,15 +33,34 @@ const Card = () => {
         console.log("searchItems updated:", searchItems);
     }, [searchItems]);
 
-
     useEffect(() => {
-        fetch('data.json').then(response => response.json())
-            .then(data => {
-                setData(data);
-                setFilteredJobs(data); // Initialize filteredJobs with all jobs
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    }, [])
+        const fetchData = async () => {
+            try {
+                // Use the BASE_URL environment variable to construct the correct path
+                const response = await fetch(`${import.meta.env.BASE_URL}data.json`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const jsonData = await response.json();
+                setData(jsonData);
+                setFilteredJobs(jsonData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    // useEffect(() => {
+    //     fetch('data.json').then(response => response.json())
+    //         .then(data => {
+    //             setData(data);
+    //             setFilteredJobs(data);
+    //              // Initialize filteredJobs with all jobs
+    //         })
+    //         .catch(error => console.error('Error fetching data:', error));
+    // }, [])
 
     const addSearch = (value: string) => {
         dispatch(addSearchItem(value));
