@@ -64,7 +64,7 @@ const Card = () => {
         <div className="container">
             {filteredJobs ? (
                 filteredJobs.map((job, index) => (
-                    <div key={index} style={{ color: "red" }} className={`card-wrapper ${job.featured ? 'featured' : ''}`}>
+                    <div key={index} className={`card-wrapper ${job.featured ? 'featured' : ''}`}>
                         <div className='right-container'>
                             <div><img src={job.logo} width="60px" alt={`${job.company} logo`} /></div>
                             <div className='job-listing'>
